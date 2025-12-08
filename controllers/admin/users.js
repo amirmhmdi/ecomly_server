@@ -1,7 +1,7 @@
 const { User } = require("../../models/user");
 const { Order } = require("../../models/order");
 const { OrderItem } = require("../../models/order_item");
-const { CardProduct } = require("../../models/card_product");
+const { CartProduct } = require("../../models/cart_product");
 const { Token } = require("../../models/token");
 exports.getUserCount = async function (_, res) {
     try {
@@ -26,9 +26,9 @@ exports.deleteUser = async function (req, res) {
         await Order.deleteMany({ user: userId });
         await OrderItem.deleteMany({ _id: { $in: order.orderItems } });
 
-        await CardProduct.deleteMany({ _id: { $in: user.card } });
+        await CartProduct.deleteMany({ _id: { $in: user.cart } });
 
-        await User.findByIdAndDelete(userId, { $pull: { card: { $exists: true } } });
+        await User.findByIdAndDelete(userId, { $pull: { cart: { $exists: true } } });
 
         await Token.deleteOne({ userId: userId });
         

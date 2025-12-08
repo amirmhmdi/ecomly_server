@@ -12,7 +12,7 @@ exports.getUsers = async function (_, res) {
 
 exports.getUserById = async function (req, res) {
     try {
-        const user = await User.findById(req.params.id).select('-passwordHash -resetPasswordOtp -resetPasswordOtpExpire -card');
+        const user = await User.findById(req.params.id).select('-passwordHash -resetPasswordOtp -resetPasswordOtpExpire -cart');
         if (!user) return res.status(404).json({ message: "User not found" });
         return res.json(user);
     } catch (error) {
@@ -27,7 +27,7 @@ exports.updateUser = async function (req, res) {
         const user = await User.findByIdAndUpdate(req.params.id, { name, email, phone }, { new: true });
         if (!user) return res.status(404).json({ message: "User not found" });
         user.passwordHash = undefined;
-        user.card = undefined;
+        user.cart = undefined;
         return res.json(user);
     } catch (error) {
         console.error(error);
