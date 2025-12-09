@@ -25,12 +25,16 @@ const usersRouter = require("./router/users");
 const adminRouter = require("./router/admin");
 const categoriesRouter = require("./router/categories");
 const productsRouter = require("./router/products");
+const checkoutRouter = require("./router/checkout");
+const ordersRouter = require("./router/orders");
 
 app.use(`${apiVersion}/`, authrouter);
 app.use(`${apiVersion}/users`, usersRouter);
 app.use(`${apiVersion}/admin`, adminRouter);
 app.use(`${apiVersion}/categories`, categoriesRouter);
 app.use(`${apiVersion}/products`, productsRouter);
+app.use(`${apiVersion}/checkout`, checkoutRouter);
+app.use(`${apiVersion}/orders`, ordersRouter);
 app.use('/public', express.static(__dirname + '/public'));
 
 //start server
