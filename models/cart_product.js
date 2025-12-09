@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const cardProductSchema = new Schema({
+const cartProductSchema = new Schema({
     product: { type: Schema.Types.ObjectId, required: true, ref: "Product" },
     quantity: { type: Number, default: 1 },
     selectedSize: String,
@@ -15,7 +15,7 @@ const cardProductSchema = new Schema({
     reserved: { type: Boolean, default: true },
 });
 
-cardProductSchema.set('toObject', { virtuals: true });
-cardProductSchema.set('toJSON', { virtuals: true });
+cartProductSchema.set('toObject', { virtuals: true });
+cartProductSchema.set('toJSON', { virtuals: true });
 
-exports.CardProduct = model('CardProduct', cardProductSchema);
+exports.CartProduct = model('CartProduct', cartProductSchema);
