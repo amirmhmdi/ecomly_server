@@ -8,6 +8,7 @@ const cartController = require("../controllers/cart");
 router.get("/", usersController.getUsers);
 router.get("/:id", usersController.getUserById);
 router.put("/:id", usersController.updateUser);
+router.get("/:id/paymentProfile", usersController.getPaymentProfile);
 
 //wighlish 
 router.get("/:id/wishlist", wishlistController.getUserWishlist);
